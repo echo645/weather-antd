@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import {
   Layout,Button,Row,Select
 } from 'antd';
-import './App.css';
-import CardHours from './CardHours.js';
-import Time from './Time.js'
-import CardWeek from './CardWeek.js';
-import IconFont from './IconFont.js';
-import {provinceData,cityData} from './City';
+import './AppPc.css';
+import CardHours from '../CardHours.js';
+import Time from '../Time.js'
+import CardWeek from '../CardWeek.js';
+import IconFont from '../IconFont.js';
+import {provinceData,cityData} from '../City';
 
 const {
   Header, Footer, Content,
@@ -28,11 +28,11 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    var url = '/now.json?key=a1e6hmsdkbonhkn5&location=北京&language=zh-Hans&unit=c'
+    var url = '/now.json?key=Sw45kFrqNlAsy2rj_&location=北京&language=zh-Hans&unit=c'
     this.getData(url)
-    var urlHour = '/hourly.json?key=a1e6hmsdkbonhkn5&location=北京&language=zh-Hans&unit=c&start=0&hours=24'
+    var urlHour = '/hourly.json?key=Sw45kFrqNlAsy2rj_&location=北京&language=zh-Hans&unit=c&start=0&hours=24'
     this.getHourData(urlHour)
-    var urlWeek = '/daily.json?key=a1e6hmsdkbonhkn5&location=北京&language=zh-Hans&unit=c&start=0&days=7'
+    var urlWeek = '/daily.json?key=Sw45kFrqNlAsy2rj_&location=北京&language=zh-Hans&unit=c&start=0&days=7'
     this.getWeekData(urlWeek)
   }
   getData = (url) => {
@@ -44,14 +44,11 @@ class App extends Component {
       }else{
         this.setState({
           nowInfo: responseJson
-          //now: responseJson.results[0].location.name,
         });
-        //console.log(responseJson.results[0].location.name)
+        console.log(responseJson)
       }
     })
-    .catch((error) => {
-      console.error(error)
-    });
+    ;
   }
   getHourData = (url) => { 
     fetch(url)
@@ -64,9 +61,7 @@ class App extends Component {
         });
       }
     })
-    .catch((error) => {
-      console.error(error)
-    });
+    ;
   }
   getWeekData = (url) => { 
     fetch(url)
@@ -79,9 +74,7 @@ class App extends Component {
         });
       }
     })
-    .catch((error) => {
-      console.error(error)
-    });
+    ;
   }
   handleProvinceChange = (value) => {
     this.setState({
@@ -127,8 +120,8 @@ class App extends Component {
     return (
       <div className='App'>
         <Layout style={{}}>
-            <Header style={{backgroundImage: "url(" + require("./img/" + bgNum + ".png") + ")", resizeMode:'stretch', marginBottom:20,minHeight: 550}} >
-              <div style={{backgroundColor:'rgba(255,255,255,0.2)',paddingTop:50,fontWeight: 700, fontSize: 60,color:'#fff',width:1300,margin:'0 auto',marginTop:30}}>万象天气</div>
+            <Header style={{backgroundImage: "url(" + require("../img/" + bgNum + ".png") + ")",backgroundSize: '100% 100%',  marginBottom:20,minHeight: 550}} >
+              <div style={{backgroundColor:'rgba(255,255,255,0.2)',paddingTop:50,fontWeight: 700, fontSize: 60,color:'#fff',width:1300,margin:'0 auto',textAlign:"center" ,marginTop:30}}>万象天气</div>
               <div style={{backgroundColor:'rgba(255,255,255,0.2)',padding:40,width:1300,fontSize:25,margin:'0 auto',color:'#000' }}>
               <Row className="weather-data" type="flex" justify="start" align="middle" style={{ fontWeight: 600,minHeight:30 }}>
                 <IconFont type = "icon-palce1" style={{ fontSize: '25px' }}/>
@@ -136,7 +129,7 @@ class App extends Component {
                 <Button onClick={this.openDiv} style={{ marginLeft:10,marginRight:10}}>[切换]</Button>
                 <Time/>
               </Row>
-                <div id="city-select-id" style={{ width: 300, minHeight: 90 }}>
+                <div id="city-select-id" style={{ width: 300, minHeight: 90,display: 'none',position: 'absolute',backgroundColor:'#8B8989',textAlign: 'center',paddingTop: 8 }}>
                     <form>
                       <Row type="flex" justify="center" align="middle">
                         <Select
@@ -199,11 +192,11 @@ class App extends Component {
   };
   //切换城市加载该城市天气数据
   changeCity = (cityValue) => {
-    var changeUrl = '/now.json?key=a1e6hmsdkbonhkn5&location=' + cityValue + '&language=zh-Hans&unit=c';
+    var changeUrl = '/now.json?key=Sw45kFrqNlAsy2rj_&location=' + cityValue + '&language=zh-Hans&unit=c';
     this.getData(changeUrl);
-    var changeHourUrl = '/hourly.json?key=a1e6hmsdkbonhkn5&location=' + cityValue + '&language=zh-Hans&unit=c&start=0&hours=24'
+    var changeHourUrl = '/hourly.json?key=Sw45kFrqNlAsy2rj_&location=' + cityValue + '&language=zh-Hans&unit=c&start=0&hours=24'
     this.getHourData(changeHourUrl)
-    var changeWeekUrl = '/daily.json?key=a1e6hmsdkbonhkn5&location=' + cityValue + '&language=zh-Hans&unit=c&start=0&days=7'
+    var changeWeekUrl = '/daily.json?key=Sw45kFrqNlAsy2rj_&location=' + cityValue + '&language=zh-Hans&unit=c&start=0&days=7'
     this.getWeekData(changeWeekUrl)
   };
   //点击确认按钮，关闭城市切换窗口

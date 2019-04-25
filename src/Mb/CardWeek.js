@@ -87,27 +87,27 @@ class CardWeek extends Component {
             }
         }
         return (
-            <div style={{ fontSize:24 }}>
+            <div >
                 {
                     (()=>{
                         let html = []
                         for(let i = 0;i < show_num;i++){
                             html.push(
-                            <Card size="small" style={{ width: 1250,marginTop: 20,fontSize:20 }}>
+                            <Card size="small" style={{ width: '100%',marginTop: window.innerWidth/40,fontSize:window.innerWidth/32 }}>
                                 <Row type="flex" justify="space-around" align="middle" >
-                                    <div style={{width:200,textAlign:"center" }}>
+                                    <div style={{minWidth:'30%',textAlign:"center"}}>
                                         <span>{dataWeek[i].day}</span>
-                                        <span style={{ marginLeft: 10 }}>{dataWeek[i].date}</span>
+                                        <span style={{ marginLeft: 5}}>{dataWeek[i].date}</span>
                                     </div>
-                                    <div style={{width:200,textAlign:"center" }}>
-                                        <IconFont type = "icon-weatherday" style={{ fontSize: '25px' }}/>
-                                        <span style={{ marginLeft: 10 }}>{dataWeek[i].weatherDay}</span>
+                                    <div style={{minWidth:'20%',textAlign:"center"}}>
+                                            <IconFont type = "icon-weatherday" style={{ fontSize: '25px' }}/>
+                                            <span style={{ marginLeft: 5 }}>{dataWeek[i].weatherDay}</span>
                                     </div>
-                                    <div style={{width:200,textAlign:"center" }}>
+                                    <div style={{minWidth:'20%',textAlign:"center"}}>
                                         <IconFont type = "icon-weathernight" style={{ fontSize: '25px' }}/>
-                                        <span style={{ marginLeft: 10 }}>{dataWeek[i].weatherNight}</span>
+                                        <span style={{ marginLeft: 5 }}>{dataWeek[i].weatherNight}</span>
                                     </div>
-                                    <div style={{width:200,textAlign:"center" }}>
+                                    <div style={{minWidth:'20%',textAlign:"center"}}>
                                         <span>{dataWeek[i].temperatureLow}</span>
                                         <span>℃</span>
                                         <span>～</span>
@@ -120,8 +120,8 @@ class CardWeek extends Component {
                         return html
                     })()
                 }
-                <div style={{ width: 1250,marginTop: 20,fontSize:20,textAlign:"center" }}>
-                    <Button id="showmore-btn" onClick={()=>{this.setState({showMore: !this.state.showMore})}}>
+                <div style={{ width: '100%' ,marginTop: 20,fontSize:20,textAlign:'center'}}>
+                    <Button id="showmore-btn"   onClick={()=>{this.setState({showMore: !this.state.showMore})}}>
                         {
                             this.state.showMore ? "点击收起更多": "点击加载更多"
                         }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {
     Row
 } from 'antd';
+
+
 class Time extends Component { 
     constructor(props){
         super(props);
@@ -23,8 +25,8 @@ class Time extends Component {
         let dayArray = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
         return (
             <Row type="flex" justify="start" align="middle" style={{ fontWeight: 600,minHeight:30 }}>
-                <span>当前时间:</span>
-                <span id="date-txt">{year + "/" + month + "/" + daym}&nbsp;&nbsp;&nbsp;</span>
+                
+                <span id="date-txt">{year + "/" + month + "/" + daym}&nbsp;&nbsp;</span>
                 <span id="week-day-txt">{dayArray[day]}</span>
                 <span id="time-txt">&nbsp;&nbsp;{h + ":" + m + ":" + s}</span>
             </Row>
